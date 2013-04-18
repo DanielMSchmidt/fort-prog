@@ -6,9 +6,15 @@ reversed (x:xs) = (reversed xs) ++ [x]
 -- reversed' [x] = [x]
 -- reversed' (a:bs:c) = [c] ++ (reversed' bs) ++ [a]
 
-indexOf :: a -> [a] -> Maybe Int
+indexOf :: Int -> [Int] -> Maybe Int
 indexOf needle [] = Nothing
-indexOf needle (x:xs) = indexOf' 0 needle (x:xs)
-  where indexOf' count needle (x:xs) = if needle == x
-                                       then count
-                                       else indexOf' (count + 1) needle xs
+indexOf needle (x:xs) = indexOf' 0
+ where
+  indexOf' count = if needle == x
+                   then Just count
+                   else indexOf' (count + 1)
+
+concInter :: String -> [String] -> String
+concInter _         []     = ""
+concInter _         [x]    = x
+concInter delimiter (x:xs) = x ++ delimiter ++ concInter delimiter xs

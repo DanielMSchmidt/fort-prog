@@ -2,9 +2,10 @@ reversed :: [a] -> [a]
 reversed [x]    = [x]
 reversed (x:xs) = (reversed xs) ++ [x]
 
--- reversed' :: [a] -> [a]
--- reversed' [x] = [x]
--- reversed' (a:bs:c) = [c] ++ (reversed' bs) ++ [a]
+reversed' :: [a] -> [a]
+reversed' [x] = [x]
+reversed' (x:y) = (y:x)
+reversed' (a:bs:c) = [c] ++ (reversed' bs) ++ [a]
 
 indexOf :: Int -> [Int] -> Maybe Int
 indexOf needle []     = Nothing
